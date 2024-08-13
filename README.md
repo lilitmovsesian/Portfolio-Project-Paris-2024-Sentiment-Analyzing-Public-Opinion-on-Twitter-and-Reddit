@@ -3,11 +3,13 @@
 ## Prerequisites
 Python 3.x installed on your system.
 Install the required dependencies:
+
     pip install -r requirements.txt
 
 ## Configuration
 To authenticate with the Twitter API, API keys and access tokens should be provided. These should be securely stored in a .env file in the root directory.
 Twitter API credentials are stored as follows:
+
     API_KEY='api_key'
     API_KEY_SECRET='api_key_secret'
     ACCESS_TOKEN='access_token'
@@ -15,6 +17,7 @@ Twitter API credentials are stored as follows:
 
 ## Usage
 Run the script as follows:
+
     python paris_2024.py
 
 ### References
