@@ -13,7 +13,7 @@ Twitter API credentials are stored as follows:
     API_KEY='api_key'
     API_KEY_SECRET='api_key_secret'
     ACCESS_TOKEN='access_token'
-    _ACCESS_TOKEN_SECRET='access_token_secret'
+    ACCESS_TOKEN_SECRET='access_token_secret'
 
 ## Usage
 Run the script as follows:
