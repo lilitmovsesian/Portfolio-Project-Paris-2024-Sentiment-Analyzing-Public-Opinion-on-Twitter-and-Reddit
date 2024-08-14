@@ -1,1 +1,6 @@
 .env
+tweets.db
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
