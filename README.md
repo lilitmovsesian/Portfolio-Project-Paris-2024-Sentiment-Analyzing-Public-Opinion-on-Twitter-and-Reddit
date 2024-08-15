@@ -1,10 +1,10 @@
 # Portfolio Project Paris 2024 Sentiment: Analyzing Public Opinion on Twitter
 ## Twitter Data Extraction
-For the Twitter data collection process the Basic X API v2 was used. This API version allows search of recent tweets from the last 7 days that match the given search query, supporting up to 60 requests / 15 mins per app with a maximum of 100 results per response. The month limit is retrieve of 10000 posts.
+For the Twitter data collection process the Basic X API v2 was used. This API version allows search of recent tweets from the last 7 days that match the given search query, supporting up to 60 requests / 15 mins per app with a maximum of 100 results per response. The month limit for retrieving posts is 10000.
 
 ### Tweets Fetching
 Retweets were excluded from the database to ensure more accurate results of the sentiment analysis. Since tweets rarely include country, country_code, and place_id data, I chose not to collect this information. The user's location, which is commonly present, is sufficient for my purposes.
-Вue to excluded retweets, strict restrictions and a technical error in recording to the database, I managed to get only 330 posts and decided to switch to the reddit API.
+Due to excluded retweets, strict restrictions and a technical error in recording to the database, I managed to get only 330 posts and decided to switch to the Reddit API.
 
 ### Prerequisites
 Python 3.x installed on your system.

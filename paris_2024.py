@@ -2,8 +2,6 @@ from src.twitter_api import TwitterAPI
 from src.database import Database
 import os
 from dotenv import load_dotenv
-from apscheduler.schedulers.blocking import BlockingScheduler
-from functools import partial
 
 def main():
     load_dotenv()
