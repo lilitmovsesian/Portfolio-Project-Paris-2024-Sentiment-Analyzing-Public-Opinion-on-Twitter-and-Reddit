@@ -9,7 +9,7 @@ class TwitterAPI:
     def fetch_tweets(self, query):
         tweet_instances = []
         next_token = None
-        for _ in range(1):
+        for _ in range(10):
             tweets = self.client.search_recent_tweets(query=query, 
                                                     tweet_fields=['id', 'text', 'created_at'], 
                                                     user_fields = ['name','username','location','verified'], 
@@ -39,4 +39,5 @@ class TwitterAPI:
                         location = user.get('location')
                         verified = user.get('verified')
                     tweet_instances.append(Tweet(id = id,text=text, created_at=created_at, author_id = author_id, name = name, username = username, location = location, verified = verified))
+            time.sleep(5)
         return tweet_instances
