@@ -1,4 +1,4 @@
-# Portfolio Project Paris 2024 Sentiment: Analyzing Public Opinion on Twitter
+# Portfolio Project Paris 2024 Sentiment: Analyzing Public Opinion on Twitter and Reddit
 ## Twitter Data Extraction
 For the Twitter data collection process the Basic X API v2 was used. This API version allows search of recent tweets from the last 7 days that match the given search query, supporting up to 60 requests / 15 mins per app with a maximum of 100 results per response. The month limit for retrieving posts is 10000.
 
