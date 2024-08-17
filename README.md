@@ -5,12 +5,13 @@
 ### Twitter Data Extraction Tools
 For the Twitter data collection process the Basic X API v2 and 'Tweepy' library were used. This API version allows search of recent tweets from the last 7 days that match the given search query, supporting up to 60 requests / 15 mins per app with a maximum of 100 results per response. The month limit for retrieving posts is 10000.
 
+### Tweets Data Storage
+I utilized SQLite as a database to manage and store tweet data. I used the SQLAlchemy library to interface with the SQLite database, which provides ORM (Object-Relational Mapping) framework for handling tweets.
+
 ### Tweets Fetching
 Retweets were excluded from the database to ensure more accurate results of the sentiment analysis. Since tweets rarely include country, country_code, and place_id data, I chose not to collect this information. The user's location, which is commonly present, is sufficient for my purposes. The search query is:
 
     "olympics OR #olympics OR #olympics2024 OR paris 2024 OR #paris2024 OR olympic games OR #olympicgames OR olympic day OR #olympicday OR road to paris 2024 OR #roadtoparis2024 OR olympic 2024 OR #olympic2024 OR olympic OR #olympic OR summer olympics OR #summerolympics OR 2024 paris olympics OR #2024parisolympics OR paris olympics OR #parisolympics"
-
-
 
 Due to excluded retweets, strict restrictions and a technical error in recording to the database, I managed to get only 330 posts and decided to switch to the Reddit API.
 
@@ -42,8 +43,15 @@ Reddit is a popular social network, where users can write posts in different top
 ### Reddit Posts Extraction Tools
 Reddit posts were collected with use of Reddit API free version and 'PRAW' library, which allows to fetch up to 250 most recent posts per response based on the sort parameters provided.
 
+### Reddit Posts Storage
+For the Reddit component, a similar approach is used to manage and store post data from Reddit. I again used SQLite with SQLAlchemy for ORM functionality.
+
 ### Reddit Posts Fetching
-Reddit posts were searched through using several 'PRAW' functions, like 'subreddit.search' which searches by a given key-word query with different sorting parameters('hot', 'top', 'new', 'relevant', 'comments'), and 'subreddit.top', 'subreddit.hot', 'subreddit.new' functions, which search globally not based on a query match. The search was performed both in an 'all' subreddit based on a query and in a subreddit named 'olympics' without a query. The time filter was set to 'month', 'year' and 'all', but it was decided to exclude oldest posts within the data cleaning.
+Reddit posts were searched through using several 'PRAW' functions, like 'subreddit.search' which searches by a given key-word query with different sorting parameters('hot', 'top', 'new', 'relevant', 'comments'), and 'subreddit.top', 'subreddit.hot', 'subreddit.new' functions, which search globally not based on a query match. The default query was:
+
+    "olympics OR #olympics OR #olympics2024 OR paris 2024 OR #paris2024 OR olympic games OR #olympicgames OR olympic day OR #olympicday OR road to paris 2024 OR #roadtoparis2024 OR olympic 2024 OR #olympic2024 OR olympic OR #olympic OR summer olympics OR #summerolympics OR 2024 paris olympics OR #2024parisolympics OR paris olympics OR #parisolympics"
+
+The search was performed both in an 'all' subreddit based on a query and in a subreddit named 'olympics' without a query. The time filter was set to 'month', 'year' and 'all', but it was decided to exclude oldest posts within the data cleaning.
 
 ### Prerequisites
 Python 3.x installed on your system.
@@ -62,7 +70,15 @@ Reddit API credentials are stored as follows:
 ### Usage
 Run the script as follows:
 
-    python paris_2024.py
+    paris_2024.py [-h] [--query [QUERY]] [--subreddit SUBREDDIT] [--sort SORT] [--time TIME]
+
+    Command Line Interface Arguments:
+    --query [QUERY]         If used without a value, is set to a default query. When this argument is absent,
+                            the reddit search is performed globally not based on a query match.
+    --subreddit SUBREDDIT   Can be set to the subreddit name. Default value is "olympics".
+    --sort SORT             Can be set to "hot", "top", "new", "relevant", "comments".  Default value is "new".
+    --time TIME             Can be set to , "hour", "day", "week", "month", "year", "all".  Default value is "month".
+    
 
 ### References
 [1]: Tweepy Documentation. Available at: https://docs.tweepy.org/en/stable
