@@ -3,6 +3,8 @@ import pandas as pd
 from textblob import TextBlob
 import matplotlib.pyplot as plt
 import seaborn as sns
+import numpy as np
+from sklearn import metrics
 
 db = sqlite3.connect('./Reddit/posts.db')
 
@@ -29,6 +31,13 @@ if df['text'].empty:
 else:
     df['sentiment_polarity'] = df['text'].apply(lambda x: TextBlob(x).sentiment.polarity if pd.notnull(x) else 0)
     df['sentiment_subjectivity'] = df['text'].apply(lambda x: TextBlob(x).sentiment.subjectivity if pd.notnull(x) else 0)
+
+average_polarity = df['sentiment_polarity'].mean()
+
+print('Mean Polarity: ',average_polarity)
+print('Mean Absolute Error:', metrics.mean_absolute_error(df['sentiment_polarity'], [average_polarity] * len(df)))
+print('Mean Squared Error:', metrics.mean_squared_error(df['sentiment_polarity'], [average_polarity] * len(df)))
+print('Root Mean Square Error:', np.sqrt(metrics.mean_squared_error(df['sentiment_polarity'], [average_polarity] * len(df))))
 
 plt.figure(figsize=(14, 6))
 
@@ -67,4 +76,3 @@ plt.grid(True)
 
 plt.tight_layout()
 plt.show()
-

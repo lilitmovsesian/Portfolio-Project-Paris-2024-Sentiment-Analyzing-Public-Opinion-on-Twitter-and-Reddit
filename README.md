@@ -109,9 +109,16 @@ The data cleaning process utilized the Pandas library and involved the following
 ### Sentiment Analysis
 Sentiment analysis was conducted using the TextBlob library, with visualizations produced using Seaborn and Matplotlib. The analysis provided insights into the general sentiment expressed in Reddit posts about the Paris 2024 Olympics. The findings from this analysis are as follows: 
 
+    Mean Polarity:            0.09019599058426332
+    Mean Absolute Error:      0.11817140329737352
+    Mean Squared Error:       0.02439394476893306
+    Root Mean Square Error:   0.15618560999315226
+
 ![Sentiment Polarity and Subjectivity](./Figure_1.png)
 
 ![Sentiment Polarity and Subjectivity Scatterplot](./Figure_2.png)
+
+The sentiment polarity and subjectivity have a slightly positive correlation, indicating that higher text polarity may be associated with higher text subjectivity.
 
 ### References
 [1]: Tweepy Documentation. Available at: https://docs.tweepy.org/en/stable
